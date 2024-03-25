@@ -4,16 +4,13 @@ import "./App.css";
 
 const App: React.FC = () => {
   //https://es.react.dev/reference/react/useRef
-  const fechaBase = useRef(DateTime.local()); // Estado inicial con la fecha actual en la zona horaria local
+  const fechaBase = useRef(DateTime.local());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // No es posible cambiar el estado 'fechaBase' directamente debido a la restricción
-      // Se podría usar un estado separado para controlar la renderización
-      // window.location.reload();
       fechaBase.current = DateTime.local();
       forceUpdate();
-    }, 1000); // Actualizar cada segundo para mantener la hora actualizada
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -24,7 +21,7 @@ const App: React.FC = () => {
   const obtenerHoraCiudad = (ciudades: string, zonaHoraria: string) => {
     return fechaBase.current
       .setZone(zonaHoraria)
-      .toLocaleString(DateTime.TIME_WITH_SECONDS);
+      .toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
   };
 
   return (
