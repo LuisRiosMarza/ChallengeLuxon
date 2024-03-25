@@ -24,7 +24,7 @@ const App: React.FC = () => {
   const obtenerHoraCiudad = (ciudades: string, zonaHoraria: string) => {
     return fechaBase.current
       .setZone(zonaHoraria)
-      .toLocaleString(DateTime.TIME_WITH_SECONDS);
+      .toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
   };
 
   return (
